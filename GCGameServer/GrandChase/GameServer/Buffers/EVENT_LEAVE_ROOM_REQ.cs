@@ -14,7 +14,7 @@ namespace GameServer.Buffers
             Write.OP(34);
             Write.Int(0);
             user.Send(Write.ack);
-            user.obterCanal.PlayersNoLobby.Add(user);
+            //user.obterCanal.PlayersNoLobby.Add(user);
         }
     }
 }
