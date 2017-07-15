@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +66,7 @@ namespace GameServer.Packets
                 {
                     sendexptable.xptable(user);
                     verifiqueInventario.GetInventory(user,pInfo.userid);
-                    charsInfo.GetCharactersFromDB(pInfo.userid);
+                    charsInfo.GetCharactersFromDB(pInfo.userid);                    
                     Write.UStr(usuario);
                     Write.UStr(pInfo.nickname);
                     Write.Byte(0);
@@ -191,13 +191,13 @@ namespace GameServer.Packets
             tickets.sendlist(user);
             petvesteditem.petvesteditem(user);
             graduatecharacterinfo.GraduateCharacterInfo(user);
-            missiondatechange.missiondatechange(user);
+            /*missiondatechange.missiondatechange(user);
             jumpcharinfo.jumpingcharinfo(user);
             slotinfo.slotinfo(user);
             fulllookinfo.fulllookinfo(user);
             systemguideinfo.systemguideinfo(user);
             fairytreebuff.fairytreebuff(user);
-            ritaschristimasinfo.ritaschristimasuserInfo(user);
+            ritaschristimasinfo.ritaschristimasuserInfo(user);*/
         }
     }
 }
