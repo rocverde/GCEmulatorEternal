@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -41,6 +41,9 @@ namespace GameServer.network
         RegisterNick regNick = new RegisterNick();
         Canal canal = new Canal();
         leaveRoom SairdaSala = new leaveRoom();
+        StartGame playgame = new StartGame();
+        LoadComplete Loading = new LoadComplete();
+        StageLoadComplete stageLoading = new StageLoadComplete();
 
         public Packets(short opcode, Readers Ler,User here,byte[] buffer,PlayerInfo pInfo)
         {
@@ -123,6 +126,23 @@ namespace GameServer.network
                case 33:
                     {
                         SairdaSala.leaveroom(here);
+                        break;
+                    }
+
+               case 36:
+                    {
+                        playgame.rungame(here);
+                        break;
+                    }
+               case 39:
+                    {
+                        Loading.LoadCompleteNot(here);
+                        break;
+                    }
+
+               case 927:
+                    {
+                        stageLoading.stageLoadComplete(here);
                         break;
                     }
 
