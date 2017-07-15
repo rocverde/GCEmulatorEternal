@@ -191,13 +191,13 @@ namespace GameServer.Packets
             tickets.sendlist(user);
             petvesteditem.petvesteditem(user);
             graduatecharacterinfo.GraduateCharacterInfo(user);
-            /*missiondatechange.missiondatechange(user);
+            missiondatechange.missiondatechange(user);
             jumpcharinfo.jumpingcharinfo(user);
             slotinfo.slotinfo(user);
             fulllookinfo.fulllookinfo(user);
             systemguideinfo.systemguideinfo(user);
             fairytreebuff.fairytreebuff(user);
-            ritaschristimasinfo.ritaschristimasuserInfo(user);*/
+            ritaschristimasinfo.ritaschristimasuserInfo(user);
         }
     }
 }
