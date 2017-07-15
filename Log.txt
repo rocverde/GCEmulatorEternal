@@ -1,0 +1,10 @@
+-Login
+-Evitar Login de Conta banida 
+-Personagems
+-Inventario
+-GamePoints
+-Vitoria & Derrotas
+-Vida Bonus
+-SP de Skills
+-Tamanho do Inventario
+-Criar Sala Missao 100%
