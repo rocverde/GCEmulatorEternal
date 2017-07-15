@@ -1,0 +1,3 @@
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\CenterServer\bin\Debug\GameServer.exe.config
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Debug\GameServer.exe.config
+C:\Users\HIRO\Documents\GrandChaseS5\GCGameServer\GrandChase\GameServer\bin\Debug\GameServer.exe.config

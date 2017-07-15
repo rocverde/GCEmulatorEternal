@@ -1,0 +1,15 @@
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\GameServer.exe.config
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\GameServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\GameServer.pdb
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\GCNet.dll
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\Ionic.Zlib.dll
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\bin\Release\MySql.Data.dll
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\obj\x86\Release\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\obj\x86\Release\GameServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\GameServer\GrandChase\GameServer\obj\x86\Release\GameServer.pdb
+C:\Users\HIRO\Documents\GrandChaseS5\Release\GameServer.exe.config
+C:\Users\HIRO\Documents\GrandChaseS5\Release\GameServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\Release\GameServer.pdb
+C:\Users\HIRO\Documents\GrandChaseS5\GCGameServer\GrandChase\GameServer\obj\x86\Release\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\HIRO\Documents\GrandChaseS5\GCGameServer\GrandChase\GameServer\obj\x86\Release\GameServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\GCGameServer\GrandChase\GameServer\obj\x86\Release\GameServer.pdb
