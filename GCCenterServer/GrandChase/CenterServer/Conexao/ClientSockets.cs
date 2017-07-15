@@ -38,7 +38,7 @@ namespace CenterServer.network
                 this.socket = socket;
                 this.ServerMaster = ServerMaster;                                
                 initialize.Vetor(this);
-                this.buffer = new byte[256];                
+                this.buffer = new byte[1024];                
                 this.socket.BeginReceive(this.buffer, 0, this.buffer.Length, SocketFlags.None, this.Read, null);
                 readers.req = this.buffer;                                
             }
@@ -114,8 +114,8 @@ namespace CenterServer.network
             {
                 if (this.active)
                 {
-                    this.buffer = new byte[256];
-                    this.readers.req = new byte[256];
+                    this.buffer = new byte[1024];
+                    this.readers.req = new byte[1024];
                     this.socket.BeginReceive(this.buffer, 0, this.buffer.Length, SocketFlags.None, this.Read, null);                    
                 }
             }
