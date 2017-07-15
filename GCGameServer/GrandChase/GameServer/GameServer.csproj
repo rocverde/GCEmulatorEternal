@@ -227,6 +227,9 @@
     <Compile Include="Buffers\EVENT_USER_BINGO_DATA_REQ.cs" />
     <Compile Include="Buffers\EVENT_RECOMMEND_FULL_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_LEAVE_ROOM_REQ.cs" />
+    <Compile Include="Buffers\EVENT_START_GAME_REQ.cs" />
+    <Compile Include="Buffers\EVENT_LOAD_COMPLETE_NOT.cs" />
+    <Compile Include="Buffers\EVENT_STAGE_LOAD_COMPLETE_NOT.cs" />
     <Compile Include="Conexao\Lobby.cs" />
     <Compile Include="Conexao\PlayerInfo.cs" />
     <Compile Include="Conexao\Salas.cs" />
