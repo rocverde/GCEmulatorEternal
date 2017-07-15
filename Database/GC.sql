@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (32 bit)
 MySQL - 5.0.51b-community-nt-log : Database - GC
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -27,12 +28,13 @@ CREATE TABLE `contas` (
   `online` int(1) default '0',
   `ban` int(1) NOT NULL default '0',
   `moderador` int(1) NOT NULL default '0',
+  `tamanhodoinventario` int(11) default '0',
   PRIMARY KEY  (`userid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `contas` */
 
-insert  into `contas`(`userid`,`usuario`,`senha`,`online`,`ban`,`moderador`) values (1,'gm1','202cb962ac59075b964b07152d234b70',0,0,0);
+insert  into `contas`(`userid`,`usuario`,`senha`,`online`,`ban`,`moderador`,`tamanhodoinventario`) values (1,'gm1','202cb962ac59075b964b07152d234b70',0,0,0,500);
 
 /*Table structure for table `equipamentos` */
 
@@ -106,7 +108,7 @@ CREATE TABLE `personagems` (
 
 /*Data for the table `personagems` */
 
-insert  into `personagems`(`userid`,`personagemid`,`classe`,`experiencia`,`nivel`,`mascote`,`vitoria`,`derrota`) values (1,0,0,100,1,0,0,0),(1,1,0,100,1,0,0,0),(1,8,0,100,1,0,0,0);
+insert  into `personagems`(`userid`,`personagemid`,`classe`,`experiencia`,`nivel`,`mascote`,`vitoria`,`derrota`) values (1,0,0,100,1,0,0,0),(1,1,0,100,1,0,0,0),(1,13,0,0,0,0,100,20);
 
 /*Table structure for table `servidores` */
 
@@ -128,6 +130,69 @@ CREATE TABLE `servidores` (
 /*Data for the table `servidores` */
 
 insert  into `servidores`(`id`,`name`,`descricao`,`IP`,`PORTA`,`UsuariosOnline`,`MaximoDePlayers`,`Flag`,`Tipo`) values (1,'missão','Servidor de Missao','127.0.0.1',9400,0,50,323,0),(2,'testes','bla bla bla','127.0.0.1',9400,0,50,323,0);
+
+/*Table structure for table `spleft` */
+
+DROP TABLE IF EXISTS `spleft`;
+
+CREATE TABLE `spleft` (
+  `userid` int(11) default NULL,
+  `personagemid` int(11) default NULL,
+  `SP` int(11) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `spleft` */
+
+insert  into `spleft`(`userid`,`personagemid`,`SP`) values (1,8,70);
+
+/*Table structure for table `vidabonus` */
+
+DROP TABLE IF EXISTS `vidabonus`;
+
+CREATE TABLE `vidabonus` (
+  `userid` int(11) default NULL,
+  `quantidade` int(11) default '10'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `vidabonus` */
+
+insert  into `vidabonus`(`userid`,`quantidade`) values (1,10);
+
+/* Procedure structure for procedure `GC_Register` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `GC_Register` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `GC_Register`(in GCLogin VARCHAR(20),
+	in GCSenha VARCHAR(55),
+    in GCNick  VARCHAR(20),
+    in GCpb    INT(11))
+BEGIN
+	declare GCid int(11);
+	INSERT INTO `account`(login,Passwd,Nick,Gamepoint)
+    VALUES (GCLogin,GCSenha,GCNick,GCpb); -- Contas
+	SET GCid = LAST_INSERT_ID();
+    
+    INSERT INTO `attendancepoints`(LoginUID,points)
+    VALUES(GCid, 520); -- Calendario
+    
+    INSERT INTO `character`(LoginUID)
+    VALUES(GCid);
+    
+    INSERT INTO `charslot`(LoginUID,Slots)
+    VALUES(GCid, 1);
+    
+    INSERT INTO `tutorialmode`(id,active)
+    VALUES(GCid, 0);
+    
+    INSERT INTO `userauthlevel`(id,authlevel)
+    VALUES(GCid, 0);
+    
+    INSERT INTO `currentcashvirtual`(LoginUID,Login,Cash)
+    VALUES(GCid, GCLogin, 0);
+END */$$
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
