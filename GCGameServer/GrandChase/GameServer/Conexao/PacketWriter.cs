@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +18,8 @@ namespace GameServer.network
         public void Dispose()
         {
             ack = null;
+            index = 0;
+            size = 0;
         }
 
         public void Byte2(byte x)
@@ -41,6 +43,25 @@ namespace GameServer.network
                 Array.Resize(ref ack, size);
             }
             ack[index++] = x;
+        }
+
+        public void Boolean(bool get)
+        {
+            int temp = 1;
+            if (size < index + temp)
+            {
+                temp = temp + 10;
+                size += temp;
+                Array.Resize(ref ack, size);
+            }
+            if (get == true)
+            {
+                ack[index++] = 1;
+            }
+            else
+            {
+                ack[index++] = 0;
+            }
         }
 
         public void Int(Int32 u)
