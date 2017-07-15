@@ -1,0 +1,11 @@
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\CenterServer.exe.config
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\CenterServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\CenterServer.pdb
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\GCNet.dll
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\Ionic.Zlib.dll
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\MySql.Data.dll
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\obj\x86\Debug\CenterServer.csprojResolveAssemblyReference.cache
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\obj\x86\Debug\CenterServer.exe
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\obj\x86\Debug\CenterServer.pdb
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\lua51.dll
+C:\Users\HIRO\Documents\GrandChaseS5\CenterServer\GrandChase\CenterServer\bin\Debug\LuaInterface.dll
