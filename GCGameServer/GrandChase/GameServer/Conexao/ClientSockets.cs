@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -16,6 +16,7 @@ namespace GameServer.network
 {
     public class User
     {
+        public Canal obterCanal { get; set; }
         public int HeartCount { get; set; }
         public bool active = false;
         public Socket socket = null;
@@ -26,6 +27,8 @@ namespace GameServer.network
         public byte[] Hmac = new byte[8];
         public short prefix;
         public int count;
+        public int PersonagemAtual;
+        public Sala AtualSala;
         Initialize initialize = new Initialize();
         public PlayerInfo pInfo = new PlayerInfo();
         Readers readers = new Readers();
