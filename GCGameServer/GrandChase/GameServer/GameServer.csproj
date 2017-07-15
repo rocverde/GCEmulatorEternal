@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buffers\EVENT_GET_USER_DONATION_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_DEPOT_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_ENTER_CHANNEL_REQ.cs" />
     <Compile Include="Buffers\EVENT_CHANNEL_LIST_REQ.cs" />
@@ -222,7 +223,13 @@
     <Compile Include="Buffers\EVENT_TODAYS_POPUP_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_SUBSCRIPTION_INFO_NOT.cs" />
     <Compile Include="Buffers\EVENT_REGISTER_NICKNAME_REQ.cs" />
+    <Compile Include="Buffers\EVENT_ROOM_LIST_REQ.cs" />
+    <Compile Include="Buffers\EVENT_USER_BINGO_DATA_REQ.cs" />
+    <Compile Include="Buffers\EVENT_RECOMMEND_FULL_INFO_REQ.cs" />
+    <Compile Include="Buffers\EVENT_LEAVE_ROOM_REQ.cs" />
+    <Compile Include="Conexao\Lobby.cs" />
     <Compile Include="Conexao\PlayerInfo.cs" />
+    <Compile Include="Conexao\Salas.cs" />
     <Compile Include="DESEncryption.cs" />
     <Compile Include="log.cs" />
     <Compile Include="Conexao\ClientSockets.cs" />
