@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace GameServer
             log.Warn("Configuraçoes MySQL:");
             db.Initialize();
             configserver.servers = new Server[configserver.hosts.Length + 1];
-            db.OpenConnection();
+            db.OpenConnection();            
             if (db.Connected == true)
             {
                 log.Info("\n -- Servidor [" + configserver.server + "]");
@@ -32,7 +32,8 @@ namespace GameServer
                     configserver.Port = Ports[a];
                     configserver.servers[a] = new Server(a, configserver.hosts[0]);
                 }
-            }            
+            }
+            Ultilize.init();
             log.Status(log.LUA_RELEASE + "  " + log.LUA_COPYRIGHT);            
             while (true)
             {
