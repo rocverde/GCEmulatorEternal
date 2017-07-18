@@ -1,12 +1,23 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
+using GameServer.Conexao;
+using GameServer.network;
 
 namespace GameServer
 {
     public static class Ultilize
     {
+        public static List<Sala> ListaDeSalas;
+        public static List<User> LobbyListaDePlayers;
+        
+        public static void init()
+        {
+            ListaDeSalas = new List<Sala>();
+            LobbyListaDePlayers = new List<User>();
+        }
         public static int StrToInt(string temp)
         {
             int result = Convert.ToInt32(temp);
