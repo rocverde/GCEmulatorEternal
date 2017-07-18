@@ -1,61 +1,36 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GameServer.network;
 using GameServer.Buffers;
+using System.Collections;
 
 namespace GameServer.Conexao
 {
     public class Canal
-    {
-        public List<User> PlayersNoLobby { get; set; }
-        public List<Sala> ListaDeSalas { get; set; }
-        public int AtualSala
-        {
-            get { return ListaDeSalas == null ? 0 : ListaDeSalas.Count; }
-        }
-        public Dictionary<ushort, Sala> LMapa { get; set; }
-        public ushort users
-        {
-            get { return (ushort)(PlayersNoLobby == null ? 0 : PlayersNoLobby.Count); }
-        }
-
-        public object _a = new object();
-
-        public ushort SalaVazia()
-        {
-            lock (_a)
-            {
-                for (ushort b = 0; b < ushort.MaxValue; b++)
-                {
-                    //1185
-                    if (LMapa.ContainsKey((ushort)b)) continue;
-
-                    return (ushort)b;
-                }
-            }
-            return ushort.MaxValue;
-        }
-
+    {                
         public void Salas(User user, Readers ler)
         {
             byte Tipo = ler.Byte();
 
-            int Numero = 0;
-            PacketManager Write = new PacketManager();            
-            foreach (Sala Sala in ListaDeSalas)
+            int Numero = 0;            
+            PacketManager Write = new PacketManager();
+            foreach (Sala Sala in Ultilize.ListaDeSalas)
             {
                 if (Tipo == 1)
                 {
+                    if (Sala.jogando == true || Sala.slotsAbertos() == 0)
+                    {
+                        continue;
+                    }
                 }
                 Numero++;
             }
             Write.OP(17);
             Write.Int(Numero);
-            foreach (Sala Sala in ListaDeSalas)
+            foreach (Sala Sala in Ultilize.ListaDeSalas)
             {
-                Write.Byte(0);
                 Write.Short(Sala.SalaID);
                 Write.UStr(Sala.SalaNome);
                 if (Sala.SalaSenha.Length > 0)
@@ -68,15 +43,36 @@ namespace GameServer.Conexao
                 }
                 Write.Byte(0);
                 Write.UStr(Sala.SalaSenha);
-                Write.Short((short)(Sala.PlayersEmSala()+Sala.slotsAbertos()));
+                Write.Short((short)(Sala.PlayersEmSala() + Sala.slotsAbertos()));
                 Write.Short((short)Sala.PlayersEmSala());
-                Write.Boolean(Sala.jogando);
-                Write.Hex("2E 02 1B 25 01 00 00 00 00 01 6B F9 38 77 00 00 00 0C 00 00 00 00 00 00 00 01");
+                if (Sala.jogando == true)
+                {
+                    Write.Byte(1);
+                }
+                else
+                {
+                    Write.Byte(0);
+                }
+                Write.Hex("FC 7B 96 8B 0B 02 00 00 00 07 22 FC 68 7F 00 00 00 03 00 00 00 00 00 00 00 01");
                 Write.UStr(Sala.ObterSessao().pInfo.nickname);
-                Write.Hex("0B 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 01");
+                Write.Hex("0B 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 04 5A 00 5A 00 00 00 00 00 00 00 00 00 00 00 00 07 FF");
             }
-            user.Send(Write.ack);
+            int buffersize = Write.ack.Length-7;
+            byte[] getComprimir = new byte[0];
+            Array.Resize(ref getComprimir,Write.ack.Length-7);
+            Array.Copy(Write.ack,7,getComprimir,0,Write.ack.Length-7);
+                        
+            byte[] temp1 = GCNet.CoreLib.ZLib.CompressData(getComprimir);
+
+            PacketManager Write2 = new PacketManager();
+            Write2.OP(17);
+            Write2.Hex("00 00 00 00 00 00 00 00 00 00 00 01");
+            Write2.Int(temp1.Length+4);
+            Write2.Byte(1);
+            Write2.Bytes(BitConverter.GetBytes(buffersize));
+            Write2.Hex(BitConverter.ToString(temp1).Replace("-"," "));
             
+            user.Send(Write2.ack);
         }
 
         public void CriarSala(User user,PlayerInfo pInfo,Readers ler, CharsInfo charsInfo)
@@ -103,7 +99,10 @@ namespace GameServer.Conexao
             int indexcharacter = ler.Int();
             byte iPersonagemID = ler.Byte();
             Sala sala = new Sala();
-            sala.SalaID = (short)id;
+
+            Ultilize.ListaDeSalas.Add(sala);
+
+            sala.SalaID = (short)(Ultilize.ListaDeSalas.Count + 1);
             sala.ITMode = 2;
             sala.SalaNome = Nome;
             sala.SalaSenha = senha;
@@ -113,9 +112,9 @@ namespace GameServer.Conexao
             sala.Map = (int)Map;
             sala.expulsar = 3;
             sala.jogando = false;
+            sala.MaxJogadores = MaxPlayers;
             
             user.PersonagemAtual = iPersonagemID;
-
             for (int m = 0; m < MaxPlayers; m++)
             {
                 if (m == 0)
@@ -174,7 +173,8 @@ namespace GameServer.Conexao
                     Write.Int(0);
                     Write.Int(0);
                     Write.Int(0);
-                    Write.UShort(0);
+                    Write.Short(0);
+                    Write.Byte(0);
                 }
                 Write.Hex("00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 01 00");
                 Write.Int(0);
@@ -201,6 +201,7 @@ namespace GameServer.Conexao
             Write.Hex("00 01 01 01 00 00 FF FF FF FF 00 00 00 00 00 00 00 00 01 AA DC 63 C0 25 80 AA DC 63 C0 25 E4 01 00 01 00 00 01 2C 00 00 00 14 00 00 1A 4A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 01 00 00 00 01");
             
             user.Send(Write.ack);
+            Ultilize.LobbyListaDePlayers.Remove(user);
         }
 
     }
