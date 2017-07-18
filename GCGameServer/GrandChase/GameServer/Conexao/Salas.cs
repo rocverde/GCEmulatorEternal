@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +28,7 @@ namespace GameServer.Conexao
         public bool RndMap;        
         public int expulsar;
         public bool jogando;
+        public short MaxJogadores;
         public slots[] slotslen = new slots[4];
 
         public int slotsAbertos()
@@ -69,5 +70,14 @@ namespace GameServer.Conexao
             return null;
         }
 
+        public int ObterPosicaoPlayer(User user)
+        {
+            for (int gg = 0; gg < 4; gg++)
+            {
+                if (slotslen[gg].ativo == true && slotslen[gg].user == user)
+                    return gg;
+            }
+            return 0;
+        }
     }
 }
