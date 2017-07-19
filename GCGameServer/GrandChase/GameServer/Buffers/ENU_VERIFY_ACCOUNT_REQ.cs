@@ -71,7 +71,8 @@ namespace GameServer.Packets
                     Write.UStr(pInfo.nickname);
                     Write.Byte(0);
                     Write.Int(pInfo.gamePoint);
-                    Write.Hex("A0 04 8E C0 10 04 8E DD 01 DE 30 31 C8");
+                    Write.Hex("A0 04 8E C0 10 04 8E DD 01");
+                    Write.Hex(Ultilize.IpHex);
                     Write.Int(0);
                     Write.Int(0);
                     Write.Int(0);
@@ -91,6 +92,7 @@ namespace GameServer.Packets
                     Write.Byte(0);
                     Write.Byte(0);
                     Write.Int(charsInfo.getLength());
+                    pInfo.charsinfo = charsInfo;
                     for (int countchar = 0; countchar < charsInfo.getLength(); countchar ++ )
                     {
                         Write.Byte((byte)charsInfo.personagems[countchar].personagemid);
@@ -176,6 +178,7 @@ namespace GameServer.Packets
                     Write.Int(400);
                     Write.Byte(0);
                     user.Send(Write.ack);
+                    user.Status = "LOGANDO";
                 }
             }
             else
