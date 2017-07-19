@@ -8,6 +8,7 @@
 -SP de Skills
 -Tamanho do Inventario
 -Criar Sala Missao 100%
+-Lista de Salas
 -Start Game
 -Chat Lobby
 -Chat Sala
