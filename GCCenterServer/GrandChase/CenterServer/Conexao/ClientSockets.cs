@@ -193,7 +193,7 @@ namespace CenterServer.network
 
         //Configuraçoes MySQL
         public static string server = "127.0.0.1";//Server MySQL
-        public static string database = "hiro";
+        public static string database = "GC";
         public static string uid = "root";
         public static string password = "root";
     }
