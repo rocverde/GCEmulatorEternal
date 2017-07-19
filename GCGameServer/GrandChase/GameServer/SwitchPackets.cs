@@ -48,7 +48,12 @@ namespace GameServer.network
         LeaveChannel exit0 = new LeaveChannel();
         Chat getChat = new Chat();
         UserList playerlist = new UserList();
-
+        Hero_Item_Catalog HeroItemC = new Hero_Item_Catalog();
+        Hero_Item_Material HeroItemM = new Hero_Item_Material();
+        ManuFactureMaterial ManuF = new ManuFactureMaterial();
+        Manufacture_Catalog ManuC = new Manufacture_Catalog();
+        SpecificItemBreakup SpecItemB = new SpecificItemBreakup();
+        
         public Packets(short opcode, Readers Ler,User here,byte[] buffer,PlayerInfo pInfo)
         {
             switch (opcode)
@@ -173,6 +178,32 @@ namespace GameServer.network
                case 18:
                     {
                         playerlist.userlist(here);
+                        break;
+                    }
+                case 886:
+                    {
+                        HeroItemC.Lista_De_Item(here);
+                        break;
+                        
+                    }
+               case 889:
+                    {
+                        HeroItemM.Item_Material(here);
+                        break;
+                    }
+               case 806:
+                    {
+                        ManuF.Manu(here);
+                        break;
+                    }
+               case 804:
+                    {
+                        ManuC.Manu(here);
+                        break;
+                    }
+               case 1465:
+                    {
+                        SpecItemB.SpecificItemB(here);
                         break;
                     }
 
