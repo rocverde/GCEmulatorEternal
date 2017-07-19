@@ -233,6 +233,7 @@
     <Compile Include="Buffers\EVENT_STAGE_LOAD_COMPLETE_NOT.cs" />
     <Compile Include="Buffers\EVENT_JOIN_ROOM_REQ.cs" />
     <Compile Include="Buffers\EVENT_LEAVE_CHANNEL_NOT.cs" />
+    <Compile Include="Buffers\EVENT_USER_LIST_REQ.cs" />
     <Compile Include="Conexao\Lobby.cs" />
     <Compile Include="Conexao\PlayerInfo.cs" />
     <Compile Include="Conexao\Salas.cs" />
