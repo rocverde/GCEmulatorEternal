@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buffers\EVENT_CHAT_REQ.cs" />
     <Compile Include="Buffers\EVENT_GET_USER_DONATION_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_DEPOT_INFO_REQ.cs" />
     <Compile Include="Buffers\EVENT_ENTER_CHANNEL_REQ.cs" />
@@ -230,6 +231,8 @@
     <Compile Include="Buffers\EVENT_START_GAME_REQ.cs" />
     <Compile Include="Buffers\EVENT_LOAD_COMPLETE_NOT.cs" />
     <Compile Include="Buffers\EVENT_STAGE_LOAD_COMPLETE_NOT.cs" />
+    <Compile Include="Buffers\EVENT_JOIN_ROOM_REQ.cs" />
+    <Compile Include="Buffers\EVENT_LEAVE_CHANNEL_NOT.cs" />
     <Compile Include="Conexao\Lobby.cs" />
     <Compile Include="Conexao\PlayerInfo.cs" />
     <Compile Include="Conexao\Salas.cs" />
