@@ -15,8 +15,7 @@ using GameServer.Conexao;
 namespace GameServer.network
 {
     public class User
-    {
-        public Canal obterCanal { get; set; }
+    {        
         public int HeartCount { get; set; }
         public bool active = false;
         public Socket socket = null;
@@ -28,7 +27,9 @@ namespace GameServer.network
         public short prefix;
         public int count;
         public int PersonagemAtual;
-        public Sala AtualSala;
+        public Sala AtualSala { get; set; }
+        public Canal obterCanal { get; set; }
+        public string Status = "";
         Initialize initialize = new Initialize();
         public PlayerInfo pInfo = new PlayerInfo();
         Readers readers = new Readers();
@@ -37,7 +38,8 @@ namespace GameServer.network
         public User(Socket socket, short ClientID, byte ServerMaster)
         {
             try
-            {                
+            {
+                this.obterCanal = null;
                 this.clientID = ClientID;
                 this.active = true;
                 this.socket = socket;
@@ -144,11 +146,6 @@ namespace GameServer.network
                 log.Error("{0} \n {1}", e.Message, e.StackTrace);
             }
         }
-        public void HBNot() //Heart
-        {
-            HeartCount = Environment.TickCount;
-        }
-
         
         public void Send(byte[] data)
         {
