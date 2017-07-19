@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,7 +48,6 @@ namespace GameServer.Buffers
             for (int gg = 0; gg < Ultilize.LobbyListaDePlayers.Count; gg++)
             {                   
                 Ultilize.LobbyListaDePlayers[gg].Send(Write.ack);
-                //Console.WriteLine("ID: "+Ultilize.LobbyListaDePlayers[gg].pInfo.usuario);
             }
         }
 
@@ -67,7 +66,10 @@ namespace GameServer.Buffers
             Write.Int(0);
             for (int gg = 0; gg < user.AtualSala.MaxJogadores; gg++)
             {
-                user.AtualSala.slotslen[gg].user.Send(Write.ack);
+                if (user.AtualSala.slotslen[gg].ativo == true)
+                {
+                    user.AtualSala.slotslen[gg].user.Send(Write.ack);
+                }
             }
         }
 
