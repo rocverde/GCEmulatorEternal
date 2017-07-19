@@ -10,13 +10,18 @@ namespace GameServer
 {
     public static class Ultilize
     {
+        public static string IpHex = "01 00 00 7F";
+        //public static ArrayList ListaDePlayers = new ArrayList();
+        //public static ArrayList ListaDeSalas = new ArrayList();
         public static List<Sala> ListaDeSalas;
         public static List<User> LobbyListaDePlayers;
+        public static Dictionary<short, Sala> SalaCountID { get; set; }
         
         public static void init()
         {
             ListaDeSalas = new List<Sala>();
             LobbyListaDePlayers = new List<User>();
+            SalaCountID = new Dictionary<short, Sala>();
         }
         public static int StrToInt(string temp)
         {
