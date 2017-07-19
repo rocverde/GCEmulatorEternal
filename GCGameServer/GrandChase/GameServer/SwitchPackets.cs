@@ -44,6 +44,9 @@ namespace GameServer.network
         StartGame playgame = new StartGame();
         LoadComplete Loading = new LoadComplete();
         StageLoadComplete stageLoading = new StageLoadComplete();
+        joinRoom join = new joinRoom();
+        LeaveChannel exit0 = new LeaveChannel();
+        Chat getChat = new Chat();
 
         public Packets(short opcode, Readers Ler,User here,byte[] buffer,PlayerInfo pInfo)
         {
@@ -66,6 +69,13 @@ namespace GameServer.network
                         canal.CriarSala(here,pInfo, Ler, charsInfo);
                         break;
                     }
+
+                case 16:
+                    {
+                        canal.Salas(here,Ler);
+                        break;
+                    }
+
 
                 case 423:
                     {
@@ -107,7 +117,6 @@ namespace GameServer.network
                     {
                         Choicebox.list(here);
                         channellist.ChannelList(here);
-                        enterChannel.enterchannel(here,Ler);
                         break;
                     }
                 case 12:
@@ -119,7 +128,6 @@ namespace GameServer.network
                 case 14:
                     {
                         channellist.ChannelList(here);
-                        enterChannel.enterchannel(here, Ler);                        
                         break;
                     }
 
@@ -143,6 +151,22 @@ namespace GameServer.network
                case 927:
                     {
                         stageLoading.stageLoadComplete(here);
+                        break;
+                    }
+               case 20:
+                    {
+                        join.enterRoom(here,Ler,charsInfo);
+                        break;
+                    }
+
+               case 26:
+                    {
+                        exit0.SairDoCanal(here);
+                        break;
+                    }
+               case 6:
+                    {
+                        getChat.chat(here,Ler);
                         break;
                     }
 
