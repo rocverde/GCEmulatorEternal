@@ -6,6 +6,9 @@ Source GCNet:
 https://github.com/syntax-dev-br/GCNet
 
 
+Desenvolvimento:
+    Hiro,SkelletonX
+
 <p align="center">
   <img src="http://i.imgur.com/tSELp6l.png"/>
   </p>
