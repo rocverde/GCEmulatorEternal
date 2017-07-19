@@ -79,5 +79,15 @@ namespace GameServer.Conexao
             }
             return 0;
         }
+
+        public int obterTime(User user)
+        {
+            for (int gg = 0; gg < MaxJogadores; gg++)
+            {
+                if (slotslen[gg].ativo== true && slotslen[gg].user == user)
+                    return gg / 3;
+            }
+            return 0;
+        }
     }
 }
