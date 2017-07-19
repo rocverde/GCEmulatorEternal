@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -54,6 +54,21 @@ namespace GameServer.network
 
             short len = BitConverter.ToInt16(temp, 0);
             index += 2;
+            return len;
+        }
+
+        public unsafe ushort UShort()
+        {
+            byte[] temp = new byte[3];
+
+            temp[0] = req[index];
+            temp[1] = req[index + 1];
+            temp[2] = req[index + 2];
+
+            Array.Reverse(temp);
+
+            ushort len = BitConverter.ToUInt16(temp, 0);
+            index += 3;
             return len;
         }
 
