@@ -47,6 +47,7 @@ namespace GameServer.network
         joinRoom join = new joinRoom();
         LeaveChannel exit0 = new LeaveChannel();
         Chat getChat = new Chat();
+        UserList playerlist = new UserList();
 
         public Packets(short opcode, Readers Ler,User here,byte[] buffer,PlayerInfo pInfo)
         {
@@ -167,6 +168,11 @@ namespace GameServer.network
                case 6:
                     {
                         getChat.chat(here,Ler);
+                        break;
+                    }
+               case 18:
+                    {
+                        playerlist.userlist(here);
                         break;
                     }
 
