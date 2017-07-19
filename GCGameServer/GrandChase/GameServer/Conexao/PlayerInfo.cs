@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using GameServer.Buffers;
 
 namespace GameServer.Conexao
 {
@@ -10,6 +11,7 @@ namespace GameServer.Conexao
     {
         public int userid,online,ban,moderador,gamePoint,bonusvida,tamanhoinventario;
         public string usuario,senha,nickname;
+        public CharsInfo charsinfo;
 
         public void GetNickname(int userid)
         {
