@@ -9,3 +9,5 @@
 -Tamanho do Inventario
 -Criar Sala Missao 100%
 -Start Game
+-Chat Lobby
+-Chat Sala
